@@ -4,7 +4,7 @@
 A bot for Discord that searches and announces Twitch streams with given community id to a discord channel.
 
 # What it does
-0. Reads settings from appsettings.json
+0. Reads settings from appsettings.json (see 'settings' in this repo)
 1. Starts a timer
 2. When timer is up, runs a query against Twitch API
 3. Checks JSON results of streams
