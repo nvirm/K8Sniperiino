@@ -240,6 +240,7 @@ namespace K8Sniperiino
                 //foreach function
 
                 //check timestamps, if exists in urls --> IF MORE THAN LIMIT, DELETE from alreadyannounced, IF LESS THAN LIMIT DELETE From resultslist -->
+                resetCheck:
                 var countalreadyann = ProgHelpers.alreadyannouncedtime.Count; 
                 if (countalreadyann > 0)
                 {
@@ -250,18 +251,28 @@ namespace K8Sniperiino
                         {
                             
                             var urlstring = ProgHelpers.alreadyannouncedurls[ix].ToString();
-                            Console.WriteLine("# Removing Row from announces");
                             int finder = ProgHelpers.urlslist.IndexOf(urlstring);
+                            if (finder > -1) //Update 12.06.2017 - Fix one Index not found error
+                            {
+                                Console.WriteLine("# Removing Row from announces");
+                                ProgHelpers.urlslist.RemoveAt(finder);
+                                ProgHelpers.titleslist.RemoveAt(finder);
+                                ProgHelpers.nameslist.RemoveAt(finder);
+                                ProgHelpers.viewerslist.RemoveAt(finder);
+                                ProgHelpers.streamstarttimes.RemoveAt(finder);
+                                ProgHelpers.avatarurlslist.RemoveAt(finder);
+                                ProgHelpers.gameslist.RemoveAt(finder);
 
-                            ProgHelpers.urlslist.RemoveAt(finder);
-                            ProgHelpers.titleslist.RemoveAt(finder);
-                            ProgHelpers.nameslist.RemoveAt(finder);
-                            ProgHelpers.viewerslist.RemoveAt(finder);
-                            ProgHelpers.streamstarttimes.RemoveAt(finder);
-                            ProgHelpers.avatarurlslist.RemoveAt(finder);
-                            ProgHelpers.gameslist.RemoveAt(finder);
+                                ProgHelpers.dateslist.RemoveAt(finder);
+                                goto resetCheck; //Update 12.06.2017 - Trying to fix this for loop when worker deletes rows.
+                            }
+                            else
+                            {
+                                Console.WriteLine("# Target stream missing, removing!");
+                                ProgHelpers.alreadyannouncedtime.RemoveAt(ix);
+                                ProgHelpers.alreadyannouncedurls.RemoveAt(ix);
+                            }
                             
-                            ProgHelpers.dateslist.RemoveAt(finder);
                         }
                         else
                         {
