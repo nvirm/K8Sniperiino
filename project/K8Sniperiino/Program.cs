@@ -343,6 +343,7 @@ namespace K8Sniperiino
                 ProgHelpers.streamstarttimes.Clear();
                 ProgHelpers.dateslist.Clear();
                 ProgHelpers.gameslist.Clear();
+                ProgHelpers.alreadyannouncedurlsremove.Clear();
                 //dont clear alreadyannounced, it will be checked on next run
 
                 Console.WriteLine("# All lists emptied");

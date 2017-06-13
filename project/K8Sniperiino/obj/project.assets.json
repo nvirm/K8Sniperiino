@@ -7963,10 +7963,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Niki\\Desktop\\K8Sniperiino\\K8Sniperiino\\K8Sniperiino.csproj",
+      "projectUniqueName": "C:\\GITHUB\\K8Sniperiino\\project\\K8Sniperiino\\K8Sniperiino.csproj",
       "projectName": "K8Sniperiino",
-      "projectPath": "C:\\Users\\Niki\\Desktop\\K8Sniperiino\\K8Sniperiino\\K8Sniperiino.csproj",
-      "outputPath": "C:\\Users\\Niki\\Desktop\\K8Sniperiino\\K8Sniperiino\\obj\\",
+      "projectPath": "C:\\GITHUB\\K8Sniperiino\\project\\K8Sniperiino\\K8Sniperiino.csproj",
+      "outputPath": "C:\\GITHUB\\K8Sniperiino\\project\\K8Sniperiino\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
