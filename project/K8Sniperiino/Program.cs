@@ -52,6 +52,7 @@ namespace K8Sniperiino
             //Who has already been announced
             public static List<DateTime> alreadyannouncedtime = new List<DateTime>(); //<- this is how i track those already announced
             public static List<string> alreadyannouncedurls = new List<string>(); //<- this is how i track those already announced
+            public static List<string> alreadyannouncedurlsremove = new List<string>();
 
             //dateslist
             public static List<DateTime> dateslist = new List<DateTime>(); //fill found streamers here (IS THIS NEEDED?)
@@ -240,19 +241,19 @@ namespace K8Sniperiino
                 //foreach function
 
                 //check timestamps, if exists in urls --> IF MORE THAN LIMIT, DELETE from alreadyannounced, IF LESS THAN LIMIT DELETE From resultslist -->
-                resetCheck:
+                //resetCheck:
                 var countalreadyann = ProgHelpers.alreadyannouncedtime.Count; 
                 if (countalreadyann > 0)
                 {
                     for (var ix = 0; ix<countalreadyann; ix++) 
                     {
                         var hours = (ProgHelpers.alreadyannouncedtime[ix] - DateTime.Now).TotalHours;
-                        if (hours<ProgHelpers.announcedifference)
+                        if (hours < ProgHelpers.announcedifference)
                         {
-                            
+
                             var urlstring = ProgHelpers.alreadyannouncedurls[ix].ToString();
                             int finder = ProgHelpers.urlslist.IndexOf(urlstring);
-                            if (finder > -1) //Update 12.06.2017 - Fix one Index not found error
+                            if (finder != -1) //Update 12.06.2017 - Fix one Index not found error
                             {
                                 Console.WriteLine("# Removing Row from announces");
                                 ProgHelpers.urlslist.RemoveAt(finder);
@@ -264,24 +265,45 @@ namespace K8Sniperiino
                                 ProgHelpers.gameslist.RemoveAt(finder);
 
                                 ProgHelpers.dateslist.RemoveAt(finder);
-                                goto resetCheck; //Update 12.06.2017 - Trying to fix this for loop when worker deletes rows.
+                                //goto resetCheck; //Update 12.06.2017 - Trying to fix this for loop when worker deletes rows.
                             }
                             else
                             {
-                                Console.WriteLine("# Target stream missing, removing!");
-                                ProgHelpers.alreadyannouncedtime.RemoveAt(ix);
-                                ProgHelpers.alreadyannouncedurls.RemoveAt(ix);
+                                Console.WriteLine("# To be removed stream had ended");
                             }
-                            
+
                         }
                         else
                         {
                             Console.WriteLine("# Allowing announce because of timedifference");
-                            ProgHelpers.alreadyannouncedtime.RemoveAt(ix);
-                            ProgHelpers.alreadyannouncedurls.RemoveAt(ix);
+                            ProgHelpers.alreadyannouncedurlsremove.Add(ProgHelpers.alreadyannouncedurls[ix]);
+                            //ProgHelpers.alreadyannouncedtime.RemoveAt(ix);
+                            //ProgHelpers.alreadyannouncedurls.RemoveAt(ix);
 
                         }
-                    }   
+                    }
+
+                    //Trying to circumvent deleting wrong row, so another for each it is..
+                    if (ProgHelpers.alreadyannouncedurlsremove.Count > 0)
+                    {  
+                        for (var ix = 0; ix < ProgHelpers.alreadyannouncedurlsremove.Count; ix++)
+                        {
+                            var stringi = ProgHelpers.alreadyannouncedurlsremove[ix];
+                            int finder = ProgHelpers.alreadyannouncedurls.IndexOf(stringi);
+                            try
+                            {
+                                ProgHelpers.alreadyannouncedurls.RemoveAt(finder);
+                                ProgHelpers.alreadyannouncedtime.RemoveAt(finder);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("! Alreadyannounced exception");
+                                Console.WriteLine(ex);
+                            }
+                            
+                        }
+                    }
+                    
                 }
 
                 //reapplying streamcount in case of removed rows
