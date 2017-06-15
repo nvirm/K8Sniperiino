@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
@@ -65,6 +66,8 @@ namespace K8Sniperiino
 
             //Counter
             public static int streamcount = 0; //initialvalue
+
+
         }
 
         //MAIN
@@ -181,7 +184,9 @@ namespace K8Sniperiino
                             }
                             if (item.SelectToken("created_at") != null)
                             {
-                                DateTime neu = DateTime.ParseExact((string)item.SelectToken("created_at"), "dd/MM/yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                                //Console.WriteLine("# DATETIME " + (string)item.SelectToken("created_at"));
+                                DateTime neu = new DateTime();
+                                DateTime.TryParseExact((string)item.SelectToken("created_at"),"MM/dd/yyyy HH:mm:ss",CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out neu); //Parse default DateTime that Newtonsoft.JSON serializes into
                                 apiresultTIMESTAMP = neu.ToLocalTime().ToString("dd/MM/yyyy HH:mm");
 
                                 //Console.WriteLine(apiresultTIMESTAMP);
@@ -344,7 +349,6 @@ namespace K8Sniperiino
                 ProgHelpers.dateslist.Clear();
                 ProgHelpers.gameslist.Clear();
                 ProgHelpers.alreadyannouncedurlsremove.Clear();
-                //dont clear alreadyannounced, it will be checked on next run
 
                 Console.WriteLine("# All lists emptied");
 
@@ -397,7 +401,8 @@ namespace K8Sniperiino
 
 
         }
-
+        //------------------------------------------------------------------------
+        
         //------------------------------------------------------------------------
         public static Timer _tm = null;
         public static AutoResetEvent _autoEvent = null;

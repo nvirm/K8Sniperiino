@@ -7,3 +7,12 @@ C:\Users\Niki\Desktop\K8Sniperiino\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniper
 C:\Users\Niki\Desktop\K8Sniperiino\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.dll
 C:\Users\Niki\Desktop\K8Sniperiino\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.pdb
 C:\Users\Niki\Desktop\K8Sniperiino\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.csprojResolveAssemblyReference.cache
+C:\Users\Niki\Documents\GitHub\K8Sniperiino\project\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniperiino.deps.json
+C:\Users\Niki\Documents\GitHub\K8Sniperiino\project\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniperiino.runtimeconfig.json
+C:\Users\Niki\Documents\GitHub\K8Sniperiino\project\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniperiino.runtimeconfig.dev.json
+C:\Users\Niki\Documents\GitHub\K8Sniperiino\project\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniperiino.dll
+C:\Users\Niki\Documents\GitHub\K8Sniperiino\project\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniperiino.pdb
+C:\Users\Niki\Documents\GitHub\K8Sniperiino\project\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.csprojResolveAssemblyReference.cache
+C:\Users\Niki\Documents\GitHub\K8Sniperiino\project\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.AssemblyInfo.cs
+C:\Users\Niki\Documents\GitHub\K8Sniperiino\project\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.dll
+C:\Users\Niki\Documents\GitHub\K8Sniperiino\project\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.pdb
