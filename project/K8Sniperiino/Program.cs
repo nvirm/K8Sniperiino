@@ -289,6 +289,14 @@ namespace K8Sniperiino
                             else
                             {
                                 Console.WriteLine("# To be removed stream had ended");
+
+                                //07/01 2nd edit: remove old stream messages When stream ends
+                                ulong findermsgid = ProgHelpers.alreadyannouncedmessageids[ix];
+                                Program editprog = new Program();
+                                await editprog.RunStreamRemove(findermsgid);
+                                Console.WriteLine("# Stream announcemessage removed!");
+                                ProgHelpers.alreadyannouncedurlsremove.Add(ProgHelpers.alreadyannouncedurls[ix]);
+                                //---------^
                             }
 
                         }
@@ -298,6 +306,13 @@ namespace K8Sniperiino
                             ProgHelpers.alreadyannouncedurlsremove.Add(ProgHelpers.alreadyannouncedurls[ix]);
                             //ProgHelpers.alreadyannouncedtime.RemoveAt(ix);
                             //ProgHelpers.alreadyannouncedurls.RemoveAt(ix);
+
+                            //07/01 2nd edit: remove old stream messages before announcing new one!
+                            ulong findermsgid = ProgHelpers.alreadyannouncedmessageids[ix];
+                            Program editprog = new Program();
+                            await editprog.RunStreamRemove(findermsgid);
+                            Console.WriteLine("# Stream announcemessage removed!");
+                            //---------^
 
                         }
                     }
@@ -375,6 +390,48 @@ namespace K8Sniperiino
             else
             {
                 Console.WriteLine("! No Streams this time");
+                var countalreadyann = ProgHelpers.alreadyannouncedurls.Count;
+                if (countalreadyann > 0)
+                {
+                    Console.WriteLine("! Found inactive streams, removing");
+                    for (var ix = 0; ix < countalreadyann; ix++)
+                    {
+                        //07/01 2nd edit: remove old stream messages before announcing new one!
+                        ulong findermsgid = ProgHelpers.alreadyannouncedmessageids[ix];
+                        Program editprog = new Program();
+                        await editprog.RunStreamRemove(findermsgid);
+                        Console.WriteLine("# Stream announcemessage removed!");
+                        ProgHelpers.alreadyannouncedurlsremove.Add(ProgHelpers.alreadyannouncedurls[ix]);
+                        //---------^
+
+
+                    }
+
+                    //Trying to circumvent deleting wrong row, so another for each it is..
+                    if (ProgHelpers.alreadyannouncedurlsremove.Count > 0)
+                    {
+                        for (var ix = 0; ix < ProgHelpers.alreadyannouncedurlsremove.Count; ix++)
+                        {
+                            var stringi = ProgHelpers.alreadyannouncedurlsremove[ix];
+                            int finder = ProgHelpers.alreadyannouncedurls.IndexOf(stringi);
+                            try
+                            {
+                                ProgHelpers.alreadyannouncedurls.RemoveAt(finder);
+                                ProgHelpers.alreadyannouncedtime.RemoveAt(finder);
+                                //01/07
+                                ProgHelpers.alreadyannouncedmessageids.RemoveAt(finder);
+                                ProgHelpers.alreadyannouncedviewers.RemoveAt(finder);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("! Alreadyannounced exception");
+                                Console.WriteLine(ex);
+                            }
+
+                        }
+                    }
+                }
+                        
             }
         }
         //-------------------------------------------------------------------------
@@ -458,22 +515,6 @@ namespace K8Sniperiino
                     ));
                 Console.WriteLine("Editing row complete");
 
-                ////Announcing stream
-                //DiscordMessage annch = await app.HttpApi.Channels.CreateMessage(xx, new DiscordMessageDetails()
-                //.SetEmbed(new DiscordEmbedBuilder()
-                //.SetTitle(name)
-                //.SetFooter("kitsun8's Sniperiino, " + ProgHelpers.version)
-                //.SetColor(DiscordColor.FromHexadecimal(0xff9933))
-                //.SetUrl(url)
-                //.SetThumbnail(avatarurl)
-                //.AddField(ProgHelpers.txtstreamtitle, title, false)
-                //.AddField(":busts_in_silhouette: " + ProgHelpers.txtviewers + " ", viewers.ToString(), true)
-                //.AddField(":game_die: " + ProgHelpers.txtgame + " ", game, true)
-                //.AddField(":clock10: " + ProgHelpers.txtstartedtime + " ", timestamp, false)
-                //));
-                ////01/07
-                //var announceid = annch.Id;
-                //ProgHelpers.alreadyannouncedmessageids.Add(announceid.Id);
             }
             catch (Exception ex)
             {
@@ -488,7 +529,43 @@ namespace K8Sniperiino
 
         }
         //------------------------------------------------------------------------
+        public async Task RunStreamRemove(ulong msgid)
+        {
 
+            DiscordBotUserToken token = new DiscordBotUserToken(ProgHelpers.bottoken); //token
+            DiscordWebSocketApplication app = new DiscordWebSocketApplication(token);
+            Shard shard = app.ShardManager.CreateSingleShard();
+            await shard.StartAsync(CancellationToken.None);
+
+            Snowflake xx = new Snowflake();
+            ulong xxid = (ulong)Convert.ToInt64(ProgHelpers.channelid);
+            xx.Id = xxid;
+            //ITextChannel textChannel = (ITextChannel)shard.Cache.Channels.Get(xx);
+            //ITextChannel textChannel = (ITextChannel)shard.Application.HttpApi.Channels.Get(xx);
+
+            try
+            {
+                //Edit msg test
+                Snowflake editflake = new Snowflake();
+                ulong xxedit = (ulong)Convert.ToInt64(msgid);
+                editflake.Id = msgid;
+                await app.HttpApi.Channels.DeleteMessage(xx, editflake);
+                Console.WriteLine("Removing row complete");
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+            }
+
+            await shard.StopAsync();
+            //returning
+            return;
+
+
+        }
+        //------------------------------------------------------------------------
         //------------------------------------------------------------------------
         public static Timer _tm = null;
         public static AutoResetEvent _autoEvent = null;
