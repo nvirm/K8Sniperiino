@@ -53,6 +53,8 @@ namespace K8Sniperiino
             //Who has already been announced
             public static List<DateTime> alreadyannouncedtime = new List<DateTime>(); //<- this is how i track those already announced
             public static List<string> alreadyannouncedurls = new List<string>(); //<- this is how i track those already announced
+            public static List<int> alreadyannouncedviewers = new List<int>(); //01/07
+            public static List<ulong> alreadyannouncedmessageids = new List<ulong>();//01/07
             public static List<string> alreadyannouncedurlsremove = new List<string>();
 
             //dateslist
@@ -246,7 +248,6 @@ namespace K8Sniperiino
                 //foreach function
 
                 //check timestamps, if exists in urls --> IF MORE THAN LIMIT, DELETE from alreadyannounced, IF LESS THAN LIMIT DELETE From resultslist -->
-                //resetCheck:
                 var countalreadyann = ProgHelpers.alreadyannouncedtime.Count; 
                 if (countalreadyann > 0)
                 {
@@ -260,6 +261,20 @@ namespace K8Sniperiino
                             int finder = ProgHelpers.urlslist.IndexOf(urlstring);
                             if (finder != -1) //Update 12.06.2017 - Fix one Index not found error
                             {
+                                Console.WriteLine("# Editing existing stream Announce");
+
+                                apiresultURL = ProgHelpers.urlslist[finder];
+                                apiresultTITLE = ProgHelpers.titleslist[finder];
+                                apiresultNAME = ProgHelpers.nameslist[finder];
+                                apiresultVIEWERS = ProgHelpers.viewerslist[finder];
+                                apiresultTIMESTAMP = ProgHelpers.streamstarttimes[finder];
+                                apiresultLOGO = ProgHelpers.avatarurlslist[finder];
+                                apiresultGAME = ProgHelpers.gameslist[finder];
+                                ulong findermsgid = ProgHelpers.alreadyannouncedmessageids[ix];
+
+                                Program editprog = new Program();
+                                await editprog.RunStreamEdit(apiresultURL, apiresultTITLE, apiresultNAME, apiresultVIEWERS, apiresultTIMESTAMP, apiresultLOGO, apiresultGAME,findermsgid);
+
                                 Console.WriteLine("# Removing Row from announces");
                                 ProgHelpers.urlslist.RemoveAt(finder);
                                 ProgHelpers.titleslist.RemoveAt(finder);
@@ -270,7 +285,6 @@ namespace K8Sniperiino
                                 ProgHelpers.gameslist.RemoveAt(finder);
 
                                 ProgHelpers.dateslist.RemoveAt(finder);
-                                //goto resetCheck; //Update 12.06.2017 - Trying to fix this for loop when worker deletes rows.
                             }
                             else
                             {
@@ -299,6 +313,9 @@ namespace K8Sniperiino
                             {
                                 ProgHelpers.alreadyannouncedurls.RemoveAt(finder);
                                 ProgHelpers.alreadyannouncedtime.RemoveAt(finder);
+                                //01/07
+                                ProgHelpers.alreadyannouncedmessageids.RemoveAt(finder);
+                                ProgHelpers.alreadyannouncedviewers.RemoveAt(finder);
                             }
                             catch (Exception ex)
                             {
@@ -333,6 +350,8 @@ namespace K8Sniperiino
                     //timestamp
                     ProgHelpers.alreadyannouncedtime.Add(DateTime.Now);
                     ProgHelpers.alreadyannouncedurls.Add(apiresultURL);
+                    ProgHelpers.alreadyannouncedviewers.Add(apiresultVIEWERS); //01/07
+                    
                     Console.WriteLine("! Announce complete");
                 }
 
@@ -388,6 +407,9 @@ namespace K8Sniperiino
                 .AddField(":game_die: "+ ProgHelpers.txtgame + " ", game, true)
                 .AddField(":clock10: " + ProgHelpers.txtstartedtime + " ", timestamp, false)
                 ));
+                //01/07
+                var announceid = annch.Id;
+                ProgHelpers.alreadyannouncedmessageids.Add(announceid.Id); 
             }
             catch(Exception ex)
             {
@@ -401,8 +423,72 @@ namespace K8Sniperiino
 
 
         }
+        //-------------------------------------------------------------------------
+        public async Task RunStreamEdit(string url, string title, string name, int viewers, string timestamp, string avatarurl, string game,ulong msgid)
+        {
+
+            DiscordBotUserToken token = new DiscordBotUserToken(ProgHelpers.bottoken); //token
+            DiscordWebSocketApplication app = new DiscordWebSocketApplication(token);
+            Shard shard = app.ShardManager.CreateSingleShard();
+            await shard.StartAsync(CancellationToken.None);
+
+            Snowflake xx = new Snowflake();
+            ulong xxid = (ulong)Convert.ToInt64(ProgHelpers.channelid);
+            xx.Id = xxid;
+            //ITextChannel textChannel = (ITextChannel)shard.Cache.Channels.Get(xx);
+            //ITextChannel textChannel = (ITextChannel)shard.Application.HttpApi.Channels.Get(xx);
+
+            try
+            {
+                //Edit msg test
+                Snowflake editflake = new Snowflake();
+                ulong xxedit = (ulong)Convert.ToInt64(msgid);
+                editflake.Id = msgid;
+                DiscordMessage annEdit = await app.HttpApi.Channels.EditMessage(xx, editflake, new DiscordMessageEdit()
+                    .SetEmbed(new DiscordEmbedBuilder()
+                    .SetTitle(name)
+                    .SetFooter("kitsun8's Sniperiino, " + ProgHelpers.version)
+                    .SetColor(DiscordColor.FromHexadecimal(0xff9933))
+                    .SetUrl(url)
+                    .SetThumbnail(avatarurl)
+                    .AddField(ProgHelpers.txtstreamtitle, title, false)
+                    .AddField(":busts_in_silhouette: " + ProgHelpers.txtviewers + " ", viewers.ToString(), true)
+                    .AddField(":game_die: " + ProgHelpers.txtgame + " ", game, true)
+                    .AddField(":clock10: " + ProgHelpers.txtstartedtime + " ", timestamp, false)
+                    ));
+                Console.WriteLine("Editing row complete");
+
+                ////Announcing stream
+                //DiscordMessage annch = await app.HttpApi.Channels.CreateMessage(xx, new DiscordMessageDetails()
+                //.SetEmbed(new DiscordEmbedBuilder()
+                //.SetTitle(name)
+                //.SetFooter("kitsun8's Sniperiino, " + ProgHelpers.version)
+                //.SetColor(DiscordColor.FromHexadecimal(0xff9933))
+                //.SetUrl(url)
+                //.SetThumbnail(avatarurl)
+                //.AddField(ProgHelpers.txtstreamtitle, title, false)
+                //.AddField(":busts_in_silhouette: " + ProgHelpers.txtviewers + " ", viewers.ToString(), true)
+                //.AddField(":game_die: " + ProgHelpers.txtgame + " ", game, true)
+                //.AddField(":clock10: " + ProgHelpers.txtstartedtime + " ", timestamp, false)
+                //));
+                ////01/07
+                //var announceid = annch.Id;
+                //ProgHelpers.alreadyannouncedmessageids.Add(announceid.Id);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+            }
+
+            await shard.StopAsync();
+            //returning
+            return;
+
+
+        }
         //------------------------------------------------------------------------
-        
+
         //------------------------------------------------------------------------
         public static Timer _tm = null;
         public static AutoResetEvent _autoEvent = null;
