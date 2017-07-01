@@ -252,7 +252,7 @@ namespace K8Sniperiino
                 {
                     for (var ix = 0; ix<countalreadyann; ix++) 
                     {
-                        var hours = (ProgHelpers.alreadyannouncedtime[ix] - DateTime.Now).TotalHours;
+                        var hours = (DateTime.Now - ProgHelpers.alreadyannouncedtime[ix]).TotalHours;
                         if (hours < ProgHelpers.announcedifference)
                         {
 
