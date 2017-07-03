@@ -9,7 +9,10 @@ A bot for Discord that searches and announces Twitch streams with given communit
 2. When timer is up, runs a query against Twitch API
 3. Checks JSON results of streams
 4. Checks if stream has been announced before
+4a. If yes, edits the announce message with new information
 5. Announces streams at discord channel
+6. If stream has ended, deletes the announce message.
+7. If stream has been online for over 2 hours, delete initial announce message and reannounce (bump-action)
 
 # Details
 Automatic Twitch stream announcer for communities.
