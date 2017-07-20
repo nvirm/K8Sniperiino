@@ -2,7 +2,7 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.1": {
-      "Discore/2.3.0": {
+      "Discore/2.4.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -520,7 +520,7 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/10.0.2": {
+      "Newtonsoft.Json/10.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.3.0",
@@ -2645,12 +2645,12 @@
     }
   },
   "libraries": {
-    "Discore/2.3.0": {
-      "sha512": "umHBySgt6o3/WNBcFoGSi9YVXWFN1dLkWRKwsp5Wvh2LYJbT0Mco7X2DDujdqiPld+19YBSsJV82cEi8u5Qxgw==",
+    "Discore/2.4.0": {
+      "sha512": "zJA6/l2R/5CEAwuzKlGZYX9LZMH3m86hp8ahSfc+yo1eWXmAA4PVHAUNYdTKPrtBmt73FHqEvu5S7AsUAOL8EQ==",
       "type": "package",
-      "path": "discore/2.3.0",
+      "path": "discore/2.4.0",
       "files": [
-        "discore.2.3.0.nupkg.sha512",
+        "discore.2.4.0.nupkg.sha512",
         "discore.nuspec",
         "lib/netstandard1.6/.xml",
         "lib/netstandard1.6/Discore.dll"
@@ -3140,10 +3140,10 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/10.0.2": {
-      "sha512": "iwElSU2IXmwGvytJsezyDML2ZWDkG2JzTYzlU/BNlmzMdlmRvbnwITsGGY74gwVEpDli1UdOLkMT7/3jxWvXzA==",
+    "Newtonsoft.Json/10.0.3": {
+      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
       "type": "package",
-      "path": "newtonsoft.json/10.0.2",
+      "path": "newtonsoft.json/10.0.3",
       "files": [
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
@@ -3158,11 +3158,11 @@
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+win8+wpa81+wp8/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+win8+wpa81+wp8/Newtonsoft.Json.xml",
-        "lib/portable-net45+win8+wpa81+wp8/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wpa81+wp8/Newtonsoft.Json.xml",
-        "newtonsoft.json.10.0.2.nupkg.sha512",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.10.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
       ]
@@ -7944,12 +7944,12 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v1.1": [
-      "Discore >= 2.3.0",
+      "Discore >= 2.4.0",
       "Microsoft.Extensions.Configuration >= 1.1.2",
       "Microsoft.Extensions.Configuration.FileExtensions >= 1.1.2",
       "Microsoft.Extensions.Configuration.Json >= 1.1.2",
       "Microsoft.NETCore.App >= 1.1.2",
-      "Newtonsoft.Json >= 10.0.2",
+      "Newtonsoft.Json >= 10.0.3",
       "System.Globalization >= 4.3.0",
       "System.IO >= 4.3.0",
       "System.Threading >= 4.3.0",
@@ -7963,10 +7963,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Niki\\Desktop\\K8Sniperiino\\K8Sniperiino\\K8Sniperiino.csproj",
+      "projectUniqueName": "C:\\Users\\Niki\\Desktop\\AVALON\\V2Tests\\K8Sniperiino\\K8Sniperiino\\K8Sniperiino.csproj",
       "projectName": "K8Sniperiino",
-      "projectPath": "C:\\Users\\Niki\\Desktop\\K8Sniperiino\\K8Sniperiino\\K8Sniperiino.csproj",
-      "outputPath": "C:\\Users\\Niki\\Desktop\\K8Sniperiino\\K8Sniperiino\\obj\\",
+      "projectPath": "C:\\Users\\Niki\\Desktop\\AVALON\\V2Tests\\K8Sniperiino\\K8Sniperiino\\K8Sniperiino.csproj",
+      "outputPath": "C:\\Users\\Niki\\Desktop\\AVALON\\V2Tests\\K8Sniperiino\\K8Sniperiino\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
@@ -7990,7 +7990,7 @@
           },
           "Discore": {
             "target": "Package",
-            "version": "2.3.0"
+            "version": "2.4.0"
           },
           "Microsoft.Extensions.Configuration": {
             "target": "Package",
@@ -8015,7 +8015,7 @@
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "10.0.2"
+            "version": "[10.0.3, )"
           },
           "System.Threading.Timer": {
             "target": "Package",
