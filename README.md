@@ -20,5 +20,6 @@ Automatic Twitch stream announcer for communities.
 Bot is running on Discore 2.4.0 (https://github.com/BundledSticksInkorperated/Discore)
 
 Project is running on .NET Core 1.1 / .NET Standard 1.6
+Twitch API is V5 API: https://dev.twitch.tv/docs/v5/reference/channels/
 
 Language support added for english, default/original language was finnish. Can be changed from appsettings.json
