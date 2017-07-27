@@ -2,15 +2,15 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.1": {
-      "Discore/2.4.0": {
+      "Discore/2.4.1": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
-          "Newtonsoft.Json": "10.0.1",
+          "Newtonsoft.Json": "10.0.3",
           "Nito.AsyncEx.Coordination": "1.0.2",
           "System.Collections.NonGeneric": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
-          "System.Net.WebSockets.Client": "4.3.0"
+          "System.Net.WebSockets.Client": "4.3.1"
         },
         "compile": {
           "lib/netstandard1.6/Discore.dll": {}
@@ -1661,7 +1661,7 @@
           "lib/netstandard1.3/System.Net.WebSockets.dll": {}
         }
       },
-      "System.Net.WebSockets.Client/4.3.0": {
+      "System.Net.WebSockets.Client/4.3.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -2645,12 +2645,12 @@
     }
   },
   "libraries": {
-    "Discore/2.4.0": {
-      "sha512": "zJA6/l2R/5CEAwuzKlGZYX9LZMH3m86hp8ahSfc+yo1eWXmAA4PVHAUNYdTKPrtBmt73FHqEvu5S7AsUAOL8EQ==",
+    "Discore/2.4.1": {
+      "sha512": "RXw/n9seuaaj/2HeohARDjQ1AR0iaq4QqGUGf7YJfkA9/D8s3Eoq6FbGbjab+5ZRJFfprLs3ZmJxyjSKbxqniQ==",
       "type": "package",
-      "path": "discore/2.4.0",
+      "path": "discore/2.4.1",
       "files": [
-        "discore.2.4.0.nupkg.sha512",
+        "discore.2.4.1.nupkg.sha512",
         "discore.nuspec",
         "lib/netstandard1.6/.xml",
         "lib/netstandard1.6/Discore.dll"
@@ -5567,10 +5567,10 @@
         "system.net.websockets.nuspec"
       ]
     },
-    "System.Net.WebSockets.Client/4.3.0": {
-      "sha512": "QjcP33TONz6wS5+3B4JKHXxQp9b5sexHH/eGTBwG2ZhlaThGvZGm3mMEHyJB6rrLsSah3h1Gc/OkJ162iavkjA==",
+    "System.Net.WebSockets.Client/4.3.1": {
+      "sha512": "uQ2JCw7PuWx/TsGc5uyMibp2X1Rui3iUpS3AHnWT7k/8A7ORTNIRktxgmrCDrgBFm771+JS+FGQPANRuWOBMTQ==",
       "type": "package",
-      "path": "system.net.websockets.client/4.3.0",
+      "path": "system.net.websockets.client/4.3.1",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -5603,7 +5603,7 @@
         "runtimes/win/lib/net46/System.Net.WebSockets.Client.dll",
         "runtimes/win/lib/netcore50/System.Net.WebSockets.Client.dll",
         "runtimes/win/lib/netstandard1.3/System.Net.WebSockets.Client.dll",
-        "system.net.websockets.client.4.3.0.nupkg.sha512",
+        "system.net.websockets.client.4.3.1.nupkg.sha512",
         "system.net.websockets.client.nuspec"
       ]
     },
@@ -7944,7 +7944,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v1.1": [
-      "Discore >= 2.4.0",
+      "Discore >= 2.4.1",
       "Microsoft.Extensions.Configuration >= 1.1.2",
       "Microsoft.Extensions.Configuration.FileExtensions >= 1.1.2",
       "Microsoft.Extensions.Configuration.Json >= 1.1.2",
@@ -7963,10 +7963,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Niki\\Desktop\\AVALON\\V2Tests\\K8Sniperiino\\K8Sniperiino\\K8Sniperiino.csproj",
+      "projectUniqueName": "C:\\Users\\Niki\\Desktop\\project\\K8Sniperiino\\K8Sniperiino.csproj",
       "projectName": "K8Sniperiino",
-      "projectPath": "C:\\Users\\Niki\\Desktop\\AVALON\\V2Tests\\K8Sniperiino\\K8Sniperiino\\K8Sniperiino.csproj",
-      "outputPath": "C:\\Users\\Niki\\Desktop\\AVALON\\V2Tests\\K8Sniperiino\\K8Sniperiino\\obj\\",
+      "projectPath": "C:\\Users\\Niki\\Desktop\\project\\K8Sniperiino\\K8Sniperiino.csproj",
+      "outputPath": "C:\\Users\\Niki\\Desktop\\project\\K8Sniperiino\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
@@ -7990,7 +7990,7 @@
           },
           "Discore": {
             "target": "Package",
-            "version": "2.4.0"
+            "version": "[2.4.1, )"
           },
           "Microsoft.Extensions.Configuration": {
             "target": "Package",
@@ -8015,7 +8015,7 @@
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "[10.0.3, )"
+            "version": "10.0.3"
           },
           "System.Threading.Timer": {
             "target": "Package",

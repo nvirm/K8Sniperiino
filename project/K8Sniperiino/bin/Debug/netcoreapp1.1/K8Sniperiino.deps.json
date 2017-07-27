@@ -1,14 +1,14 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.1",
-    "signature": "001c1d1af3c4e18fd2cceb9fbb7e0d8a220019c5"
+    "signature": "a42b2b601b277442207e5b235e303fbeeaa2856c"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v1.1": {
       "k8sniperiino/1.0.0": {
         "dependencies": {
-          "Discore": "2.4.0",
+          "Discore": "2.4.1",
           "Microsoft.Extensions.Configuration": "1.1.2",
           "Microsoft.Extensions.Configuration.FileExtensions": "1.1.2",
           "Microsoft.Extensions.Configuration.Json": "1.1.2",
@@ -18,12 +18,12 @@
           "K8Sniperiino.dll": {}
         }
       },
-      "discore/2.4.0": {
+      "discore/2.4.1": {
         "dependencies": {
           "Newtonsoft.Json": "10.0.3",
           "Nito.AsyncEx.Coordination": "1.0.2",
           "System.Collections.NonGeneric": "4.3.0",
-          "System.Net.WebSockets.Client": "4.3.0"
+          "System.Net.WebSockets.Client": "4.3.1"
         },
         "runtime": {
           "lib/netstandard1.6/Discore.dll": {}
@@ -166,7 +166,7 @@
           "lib/netstandard1.3/System.Net.WebSockets.dll": {}
         }
       },
-      "system.net.websockets.client/4.3.0": {
+      "system.net.websockets.client/4.3.1": {
         "dependencies": {
           "System.Net.WebSockets": "4.3.0"
         },
@@ -212,12 +212,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "discore/2.4.0": {
+    "discore/2.4.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zJA6/l2R/5CEAwuzKlGZYX9LZMH3m86hp8ahSfc+yo1eWXmAA4PVHAUNYdTKPrtBmt73FHqEvu5S7AsUAOL8EQ==",
-      "path": "discore/2.4.0",
-      "hashPath": "discore.2.4.0.nupkg.sha512"
+      "sha512": "sha512-RXw/n9seuaaj/2HeohARDjQ1AR0iaq4QqGUGf7YJfkA9/D8s3Eoq6FbGbjab+5ZRJFfprLs3ZmJxyjSKbxqniQ==",
+      "path": "discore/2.4.1",
+      "hashPath": "discore.2.4.1.nupkg.sha512"
     },
     "microsoft.extensions.configuration/1.1.2": {
       "type": "package",
@@ -345,12 +345,12 @@
       "path": "system.net.websockets/4.3.0",
       "hashPath": "system.net.websockets.4.3.0.nupkg.sha512"
     },
-    "system.net.websockets.client/4.3.0": {
+    "system.net.websockets.client/4.3.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QjcP33TONz6wS5+3B4JKHXxQp9b5sexHH/eGTBwG2ZhlaThGvZGm3mMEHyJB6rrLsSah3h1Gc/OkJ162iavkjA==",
-      "path": "system.net.websockets.client/4.3.0",
-      "hashPath": "system.net.websockets.client.4.3.0.nupkg.sha512"
+      "sha512": "sha512-uQ2JCw7PuWx/TsGc5uyMibp2X1Rui3iUpS3AHnWT7k/8A7ORTNIRktxgmrCDrgBFm771+JS+FGQPANRuWOBMTQ==",
+      "path": "system.net.websockets.client/4.3.1",
+      "hashPath": "system.net.websockets.client.4.3.1.nupkg.sha512"
     },
     "system.runtime.compilerservices.unsafe/4.3.0": {
       "type": "package",

@@ -25,3 +25,12 @@ C:\Users\Niki\Desktop\AVALON\V2Tests\K8Sniperiino\K8Sniperiino\obj\Debug\netcore
 C:\Users\Niki\Desktop\AVALON\V2Tests\K8Sniperiino\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.AssemblyInfo.cs
 C:\Users\Niki\Desktop\AVALON\V2Tests\K8Sniperiino\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.dll
 C:\Users\Niki\Desktop\AVALON\V2Tests\K8Sniperiino\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.pdb
+C:\Users\Niki\Desktop\project\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniperiino.deps.json
+C:\Users\Niki\Desktop\project\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniperiino.runtimeconfig.json
+C:\Users\Niki\Desktop\project\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniperiino.runtimeconfig.dev.json
+C:\Users\Niki\Desktop\project\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniperiino.dll
+C:\Users\Niki\Desktop\project\K8Sniperiino\bin\Debug\netcoreapp1.1\K8Sniperiino.pdb
+C:\Users\Niki\Desktop\project\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.csprojResolveAssemblyReference.cache
+C:\Users\Niki\Desktop\project\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.AssemblyInfo.cs
+C:\Users\Niki\Desktop\project\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.dll
+C:\Users\Niki\Desktop\project\K8Sniperiino\obj\Debug\netcoreapp1.1\K8Sniperiino.pdb
