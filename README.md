@@ -17,7 +17,7 @@ A bot for Discord that searches and announces Twitch streams with given communit
 # Details
 Automatic Twitch stream announcer for communities.
 
-Bot is running on Discore 2.4.0 (https://github.com/BundledSticksInkorperated/Discore)
+Bot is running on Discore 2.4.1 (https://github.com/BundledSticksInkorperated/Discore)
 
 Project is running on .NET Core 1.1 / .NET Standard 1.6
 
