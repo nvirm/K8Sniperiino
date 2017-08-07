@@ -360,14 +360,23 @@ namespace K8Sniperiino
                     apiresultGAME = ProgHelpers.gameslist[iz];
                   
                     Program rdyprog = new Program();
-                    await rdyprog.RunStreamAnnounce(apiresultURL, apiresultTITLE, apiresultNAME, apiresultVIEWERS, apiresultTIMESTAMP, apiresultLOGO, apiresultGAME);
+                    var taskresult = await rdyprog.RunStreamAnnounce(apiresultURL, apiresultTITLE, apiresultNAME, apiresultVIEWERS, apiresultTIMESTAMP, apiresultLOGO, apiresultGAME);
 
-                    //timestamp
-                    ProgHelpers.alreadyannouncedtime.Add(DateTime.Now);
-                    ProgHelpers.alreadyannouncedurls.Add(apiresultURL);
-                    ProgHelpers.alreadyannouncedviewers.Add(apiresultVIEWERS); //01/07
+                    if (taskresult == 1)
+                    {
+                        Console.WriteLine("! Announce returned OK");
+                        //timestamp
+                        ProgHelpers.alreadyannouncedtime.Add(DateTime.Now);
+                        ProgHelpers.alreadyannouncedurls.Add(apiresultURL);
+                        ProgHelpers.alreadyannouncedviewers.Add(apiresultVIEWERS); //01/07
+                    }
+                    else
+                    {
+                        Console.WriteLine("! Announce returned an error, not adding to already announced lists.");
+                    }
                     
-                    Console.WriteLine("! Announce complete");
+                    
+                    Console.WriteLine("! Announce task complete");
                 }
 
                 //inside foreach: add to alreadyannouncedtime&urls
@@ -435,7 +444,7 @@ namespace K8Sniperiino
             }
         }
         //-------------------------------------------------------------------------
-        public async Task RunStreamAnnounce(string url,string title,string name,int viewers,string timestamp,string avatarurl,string game)
+        public async Task<int> RunStreamAnnounce(string url,string title,string name,int viewers,string timestamp,string avatarurl,string game)
         {
 
             DiscordBotUserToken token = new DiscordBotUserToken(ProgHelpers.bottoken); //token
@@ -466,18 +475,25 @@ namespace K8Sniperiino
                 ));
                 //01/07
                 var announceid = annch.Id;
-                ProgHelpers.alreadyannouncedmessageids.Add(announceid.Id); 
+                if (announceid != null)
+                {
+                    ProgHelpers.alreadyannouncedmessageids.Add(announceid.Id);
+                }
+                
+
+                await shard.StopAsync();
+                //returning
+                return 1;
             }
             catch(Exception ex)
             {
 
+                //Console.WriteLine(ex);
+                Console.WriteLine("! EX: Ran into exception while announcing a stream! Details as follows:");
                 Console.WriteLine(ex);
+                await shard.StopAsync();
+                return 0;
             }
-
-            await shard.StopAsync();
-            //returning
-            return;
-
 
         }
         //-------------------------------------------------------------------------
@@ -513,19 +529,20 @@ namespace K8Sniperiino
                     .AddField(":game_die: " + ProgHelpers.txtgame + " ", game, true)
                     .AddField(":clock10: " + ProgHelpers.txtstartedtime + " ", timestamp, false)
                     ));
-                Console.WriteLine("Editing row complete");
+                Console.WriteLine("! Editing row complete");
+
+                await shard.StopAsync();
+                //returning
+                return;
 
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine("! EX: An error while editing the announce! Details as follows:");
                 Console.WriteLine(ex);
+                await shard.StopAsync();
+                return;
             }
-
-            await shard.StopAsync();
-            //returning
-            return;
-
 
         }
         //------------------------------------------------------------------------
@@ -555,7 +572,7 @@ namespace K8Sniperiino
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine("! EX: An error while removing the announcement! Details as follows:");
                 Console.WriteLine(ex);
             }
 

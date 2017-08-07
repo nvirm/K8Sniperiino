@@ -7963,10 +7963,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Niki\\Desktop\\project\\K8Sniperiino\\K8Sniperiino.csproj",
+      "projectUniqueName": "C:\\Users\\Niki\\Desktop\\K8Sniperiino\\project\\K8Sniperiino\\K8Sniperiino.csproj",
       "projectName": "K8Sniperiino",
-      "projectPath": "C:\\Users\\Niki\\Desktop\\project\\K8Sniperiino\\K8Sniperiino.csproj",
-      "outputPath": "C:\\Users\\Niki\\Desktop\\project\\K8Sniperiino\\obj\\",
+      "projectPath": "C:\\Users\\Niki\\Desktop\\K8Sniperiino\\project\\K8Sniperiino\\K8Sniperiino.csproj",
+      "outputPath": "C:\\Users\\Niki\\Desktop\\K8Sniperiino\\project\\K8Sniperiino\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
@@ -7990,7 +7990,7 @@
           },
           "Discore": {
             "target": "Package",
-            "version": "[2.4.1, )"
+            "version": "2.4.1"
           },
           "Microsoft.Extensions.Configuration": {
             "target": "Package",
