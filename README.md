@@ -1,3 +1,5 @@
+# STATUS: Not maintained
+
 # K8Sniperiino
 ![alt text](https://github.com/kitsun8/K8Sniperiino/blob/master/screenshots/sniperiino.PNG)
 
